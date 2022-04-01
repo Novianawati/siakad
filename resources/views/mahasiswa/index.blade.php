@@ -23,20 +23,26 @@
             <th>Nama</th>
             <th>Kelas</th>
             <th>Jurusan</th>
+            <th>No.Handphone</th>
+            <th>Email</th>
+            <th>Tanggal Lahir</th>
             <th width="280px">Action</th>
         </tr>
-        @foreach ($mahasiswa as $mhs)
+        @foreach ($mahasiswas as $Mahasiswa)
         <tr>
         
-            <td>{{ $mhs ->nim }}</td>
-            <td>{{ $mhs ->nama }}</td>
-            <td>{{ $mhs ->kelas }}</td>
-            <td>{{ $mhs ->jurusan }}</td>
+            <td>{{ $Mahasiswa ->Nim }}</td>
+            <td>{{ $Mahasiswa ->Nama }}</td>
+            <td>{{ $Mahasiswa ->Kelas }}</td>
+            <td>{{ $Mahasiswa ->Jurusan }}</td>
+            <td>{{ $Mahasiswa ->No_Handphone }}</td>
+            <td>{{ $Mahasiswa ->Email }}</td>
+            <td>{{ $Mahasiswa ->Tanggal_lahir }}</td>
             <td>
-                <form action="{{ route('mahasiswa.destroy',['mahasiswa'=>$mhs->nim]) }}" method="POST">
+                <form action="{{ route('mahasiswa.destroy',['mahasiswa'=>$Mahasiswa->Nim]) }}" method="POST">
             
-                <a class="btn btn-info" href="{{ route('mahasiswa.show',$mhs->nim) }}">Show</a>
-                <a class="btn btn-primary" href="{{ route('mahasiswa.edit',$mhs->nim) }}">Edit</a>
+                <a class="btn btn-info" href="{{ route('mahasiswa.show',$Mahasiswa->Nim) }}">Show</a>
+                <a class="btn btn-primary" href="{{ route('mahasiswa.edit',$Mahasiswa->Nim) }}">Edit</a>
                 @csrf
                 @method('DELETE')
                 <button type="submit" class="btn btn-danger">Delete</button>
