@@ -19,7 +19,7 @@ class MahasiswaController extends Controller
         $mahasiswas = Mahasiswa::all(); // Mengambil semua isi tabel
         $posts = Mahasiswa::orderBy('Nim', 'desc')->paginate(5);
         return view('mahasiswa.index', compact('mahasiswas'));
-        with('i', (request()->input('page', 1) - 1) * 4);
+        with('i', (request()->input('page', 1) - 1) * 5);
     }
 
     /**
@@ -30,6 +30,17 @@ class MahasiswaController extends Controller
     public function create()
     {
         return view('mahasiswa.create');
+    }
+
+    /**
+     * Show the form for searching
+     *
+     * @return \Illuminate\Http\Response
+     */
+    public function search(Request $request)
+    {
+        $search = Mahasiswa::where('Nim', 'like', "%".$request->search."%")->paginate(5);
+        return view('mahasiswa.index',['Mahasiswa'=>$search]);
     }
 
     /**
