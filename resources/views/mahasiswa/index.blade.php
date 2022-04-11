@@ -38,13 +38,13 @@
             <th>Tanggal Lahir</th>
             <th width="280px">Action</th>
         </tr>
-        @foreach ($mahasiswas as $Mahasiswa)
+        @foreach ($paginate as $mhs)
         <tr>
-        
-            <td>{{ $Mahasiswa ->Nim }}</td>
-            <td>{{ $Mahasiswa ->Nama }}</td>
-            <td>{{ $Mahasiswa ->Kelas }}</td>
-            <td>{{ $Mahasiswa ->Jurusan }}</td>
+
+            <td>{{ $mhs->nim }}</td>
+            <td>{{ $mhs->nama }}</td>
+            <td>{{ $mhs->kelas->nama_kelas }}</td>
+            <td>{{ $mhs->jurusan }}</td>
             <td>{{ $Mahasiswa ->No_Handphone }}</td>
             <td>{{ $Mahasiswa ->Email }}</td>
             <td>{{ $Mahasiswa ->Tanggal_lahir }}</td>
