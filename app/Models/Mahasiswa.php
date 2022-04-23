@@ -31,6 +31,6 @@ class Mahasiswa extends Model//Definisi Model
 
     public function kelas()
     {
-        return $this->belongsTo(kelas::class);
+        return $this->belongsTo(Kelas::class);
     }
 };
