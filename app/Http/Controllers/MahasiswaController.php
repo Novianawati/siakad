@@ -52,6 +52,10 @@ class MahasiswaController extends Controller
      */
     public function store(Request $request)
     {
+        if ($request ->file('image')) {
+            $namafoto = $request->file('image')->store('images', 'public');
+        }
+
         //melakukan validasi data
         $request->validate([
         'Nim' => 'required',
@@ -150,5 +154,11 @@ class MahasiswaController extends Controller
         Mahasiswa::find($Nim)->delete();
         return redirect()->route('mahasiswa.index')
         -> with('success', 'Mahasiswa Berhasil Dihapus');        
+    }
+
+    public function cetak_pdf() {
+        $mahasiswa = Mahasiswa::all();
+        $pdf = PDF::loadview('mahasiswa.cetak', ['mahasiswa'=>$mahasiswa]);
+        return $pdf->stream();
     }
 };
